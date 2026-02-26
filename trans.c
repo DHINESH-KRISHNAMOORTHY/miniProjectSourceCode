@@ -8,7 +8,7 @@ struct clientData
 {
     unsigned int acctNum; // account number
     char lastName[15];    // account last name
-    char firstName[10];   // account first name
+    char firstName[15];   // account first name
     double balance;       // account balance
 };                        // end structure clientData
 
@@ -131,7 +131,7 @@ void updateRecord(FILE *fPtr)
 
         // move file pointer to correct record in file
         // move back by 1 record length
-        fseek(fPtr, -sizeof(struct clientData), SEEK_CUR);
+        fseek(fPtr, sizeof(struct clientData), SEEK_CUR);
         // write updated record over old record in file
         fwrite(&client, sizeof(struct clientData), 1, fPtr);
     } // end else
